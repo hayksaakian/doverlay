@@ -1,4 +1,4 @@
-html {
+/*html {
   margin: 0px;
   padding: 0px;
   overflow: hidden;
@@ -12,7 +12,7 @@ body {
 ::-webkit-scrollbar-thumb {
   display: none;
 }
-
+*/
 input[type="checkbox"]:disabled
 {
   opacity: .3;

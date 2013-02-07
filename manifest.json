@@ -1,6 +1,6 @@
 {
-  "name": "Frameless Window",
-  "description": "Chrome platform app.",
+  "name": "dOverlay",
+  "description": "Dynamic Race Overlay.",
   "manifest_version": 2,
   "version": "0.1",
   "app": {
