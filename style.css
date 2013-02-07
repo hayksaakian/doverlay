@@ -13,6 +13,41 @@ body {
   display: none;
 }
 */
+
+
+#main {
+  padding: 10px;
+  width: 900px;
+  height: 506px;
+}
+
+p.css-vertical-text {
+
+  writing-mode:lr-tb;
+  -webkit-transform:rotate(270deg);
+  -moz-transform:rotate(270deg);
+  -o-transform: rotate(270deg);
+  white-space:nowrap;
+  display:block;
+  width:60px;
+  height:60px;
+  font-size:15px;
+}
+
+p.centered {
+  text-align: center;
+}
+
+.vertical-progressbar-span {
+  height: 300px;
+}
+
+.progress.vertical {
+  margin-right: 2px;
+  width: 32px;
+}
+
+
 input[type="checkbox"]:disabled
 {
   opacity: .3;

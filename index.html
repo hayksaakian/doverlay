@@ -2,27 +2,80 @@
 <html>
 	<head>
 		<title>dOverlay - Dynamic Stream Overlay</title>
-		<link href="css/bootstrap.css" rel="stylesheet">
-		<link href="css/bootstrap-responsive.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="bootstrap-progressbar/bootstrap-progressbar.css">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+		<link href="bootstrap-progressbar/bootstrap-progressbar.css" rel="stylesheet" >
 
 		<link href="style.css" rel="stylesheet" />
 	</head>
 
 	<body>
-		<div class='container-fluid'>
+		<div class='container-fluid' id='main'>
 			<div class='row-fluid'>
 				<div class='span9'>
-					<img data-src="holder.js/800x450/#0f0:#0f0">
+					<img data-src="holder.js/764x430/#0f0:#0f0">
 				</div>
-				<div class='span3'>
+				<div class='span3 vertical-progressbar-span'>
+					<h4 class='edit'>
+						Race Progress:
+					</h4>
+					<div class='row-fluid'>
+						<div class="progress vertical">
+						<a class='btn btn-mini'><p class='css-vertical-text'>Cosmo</p></a>
+					</div>
+					<div class="progress vertical progress-warning">
+						<a class='btn btn-mini'><p class='css-vertical-text'>Almo</p></a>
+					</div>
 					<div class="progress vertical progress-info">
-				    <div class="bar" data-amount-part="1337" data-amount-total="9000"></div>
+						<a class='btn btn-mini'><p class='css-vertical-text'>Pie</p></a>
+					</div>
+					<div class="progress vertical progress-success">
+						<a class='btn btn-mini'><p class='css-vertical-text'>0xwas</p></a>
+					</div>
+					<div class="progress vertical progress-danger">
+						<a class='btn btn-mini'><p class='css-vertical-text'>Flare</p></a>
+					</div>
+
+					</div>
+					<div class="progress vertical">
+				    <div class="bar" data-amount-part="24" data-amount-total="52"></div>
+					</div>
+					<div class="progress vertical progress-warning">
+				    <div class="bar" data-amount-part="22" data-amount-total="52"></div>
+					</div>
+					<div class="progress vertical progress-info">
+				    <div class="bar" data-amount-part="44" data-amount-total="52"></div>
+					</div>
+					<div class="progress vertical progress-success">
+				    <div class="bar" data-amount-part="37" data-amount-total="52"></div>
+					</div>
+					<div class="progress vertical progress-danger">
+				    <div class="bar" data-amount-part="32" data-amount-total="52"></div>
 					</div>
 				</div>
 			</div>
+			<div class='row-fluid'>
+				<div class='span9'>
+					<h2 id='heading' class='edit'>Game/Show/Broadcast Name</h2>
+				</div>
+				<div class='span3'>
+					<h1 id='timer'>12:34:56</h1>
+				</div>
+			</div>
+<!-- 			<div class='row-fluid well well-mini'>
+				<strong>Final Fantasy IX - Any% Weekly #17</strong>
+				<div class="btn-group">
+				  <button class="btn btn-info">1st - Pie</button>
+				  <button class="btn btn-success">2nd - 0xwas</button>
+				  <button class="btn btn-danger">3rd - Flare</button>
+				  <button class="btn btn-primary">4th - Cosmo</button>
+				  <button class="btn btn-warning">5th - Almo</button>
+				</div>
+			</div> -->
 		</div>
 		<script src="js/jquery.min.js"></script>
+	  <script src="js/bootstrap.min.js"></script>
+		<script src="js/jquery.jeditable.js"></script>
 	  <script src="js/holder.js"></script>
 	  <script src="bootstrap-progressbar/bootstrap-progressbar.js"></script>
 
