@@ -74,14 +74,14 @@
 							<tr id='runner_row_template' hidden='true'>
 								<td id='name'>{{name}}</td>
 								<td id='color'>{{color}}</td>
-								<td id='stream_url'>{{stream_url}}</td>
-								<td id='split_tracking'>
-									<span id='current_split'>{{0}}</span>/<span id='total_splits'>{{1}}</span>
+								<td id='stream_url'>{{{stream_url}}}</td>
+								<td id='split_tracking' data-runner-id='{{id}}'>
+									<span id='current_split'>{{current_split}}</span>/<span id='total_splits'>{{total_splits}}</span>
 									<button id='increment_split' class='btn btn-mini btn-success'>+++</button>
 									<button id='decrement_split' class='btn btn-mini btn-warning'>-</button>
 								</td>
 								<td>
-									<button id='destroy' class='btn btn-mini btn-danger'>X</button>
+									<button id='destroy' class='btn btn-mini btn-danger' data-runner-id='{{id}}'>X</button>
 								</td>
 							</tr>
 
@@ -93,7 +93,7 @@
 									<input id='color' type='text' class='input-mini' placeholder='blue'>
 								</td>
 								<td>
-									<input id='stream_url'  type='text' class='input' placeholder='http://www.twitch.tv/runnerguy2489'>
+									<input id='stream_url'  type='text' class='input' placeholder='http://www.twitch.tv/runnerguy2489' value='http://twitch.tv/'>
 								</td>
 								<td>
 									<input id='current_split' type='text' class='input-mini' placeholder='0' value='0'>
@@ -136,6 +136,9 @@
 	  <script src="js/holder.js"></script>
 	  <script src="bootstrap-progressbar/bootstrap-progressbar.js"></script>
 		<script src="js/stopwatch.js"></script>
+
+
+		<script src="mustache.js/jquery.mustache.js"></script>
 
 	  <script src="index.js"></script>
 	</body>

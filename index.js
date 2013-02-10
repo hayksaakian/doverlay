@@ -70,12 +70,44 @@ $(document).ready(function() {
     the_input.find('#current_split').val('0')
 
   });
+
+
+  $(document).on('click', '#increment_split', function(e){
+    var runner_id = $(this).parent().attr('data-runner-id')
+    var br = $('#'+runner_id+'_progressbar .bar')
+    var n = parseInt(br.attr('data-amount-part'))
+    var ns = (n + 1 <= parseInt(br.attr('data-amount-total'))) ? n + 1 : n 
+    if(ns != n){
+      br.attr('data-amount-part', ns)
+      upd(br)
+      $('#'+runner_id+'_row #current_split').text(ns)
+    }
+  });
+  $(document).on('click', '#decrement_split', function(e){
+    var runner_id = $(this).parent().attr('data-runner-id')
+    var br = $('#'+runner_id+'_progressbar .bar')
+    var n = br.attr('data-amount-part')
+    var ns = (n - 1 >= 0) ? n - 1 : n 
+    if(ns != n){
+      br.attr('data-amount-part', ns)
+      upd(br)
+      $('#'+runner_id+'_row #current_split').text(ns)
+    }
+  });
+  $(document).on('click', '#destroy', function(e){
+    var runner_id = $(this).attr('data-runner-id')
+    $('#'+runner_id+'_row').remove()
+    $('#'+runner_id+'_progressbar').remove()
+    $('#'+runner_id+'_label').remove()
+  });
+
+
 });
 function add_runner(runner, run){
   console.log(runner)
   // make a label
   var label = $('#runner_name_label_template').clone();
-  label.attr(runner.id+'_label')
+  label.attr('id', runner.id+'_label')
   label.find('p').text(runner.name)
   label.find('a').attr('href', runner.stream_url)
   label.appendTo('#runner_name_labels')
@@ -105,42 +137,12 @@ function add_runner(runner, run){
   // add them to the table
   var row = $('#runner_row_template').clone();
   row.attr('id', runner.id+'_row')
-  row.find('#name').text(runner.name)
-  row.find('#color').text(runner.color)
-  row.find('#stream_url').text(runner.stream_url)
-  row.find('#current_split').text(runner.current_split)
-  row.find('#total_splits').text(run.splits.length)
-  row.find('#color').text(runner.color)
-  // make the buttons work
-  // increment
-  row.find('#increment_split').click(function(){
-    var br = $('#'+runner.id+'_progressbar .bar')
-    var n = parseInt(br.attr('data-amount-part'))
-    var ns = (n + 1 <= parseInt(br.attr('data-amount-total'))) ? n + 1 : n 
-    if(ns != n){
-      br.attr('data-amount-part', ns)
-      upd(br)
-      $('#'+runner.id+'_row #current_split').text(ns)
-    }
-  });
-  row.find('#decrement_split').click(function(){
-    var br = $('#'+runner.id+'_progressbar .bar')
-    var n = br.attr('data-amount-part')
-    var ns = (n - 1 >= 0) ? n - 1 : n 
-    if(ns != n){
-      br.attr('data-amount-part', ns)
-      upd(br)
-      $('#'+runner.id+'_row #current_split').text(ns)
-    }
-  });
-  row.find('#destroy').click(function(){
-    $('#'+runner.id+'_row').remove()
-    $('#'+runner.id+'_progressbar').remove()
-  });
-  // decrement
-  // remove
+  runner['total_splits'] = run.splits.length
 
-  row.prependTo('#runner_rows')
+  var output = Mustache.render(row.html(), runner);
+
+  row.html(output)
+  $(row).prependTo('#runner_rows')
   row.show();
 
 }
