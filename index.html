@@ -2,8 +2,8 @@
 <html>
 	<head>
 		<title>dOverlay - Dynamic Stream Overlay</title>
-		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+		<link href="css/bootstrap.min.css" rel="stylesheet"><!-- 
+		<link href="css/bootstrap-responsive.min.css" rel="stylesheet"> -->
 		<link href="bootstrap-progressbar/bootstrap-progressbar.css" rel="stylesheet" >
 
 		<link href="style.css" rel="stylesheet" />
@@ -15,51 +15,33 @@
 				<div class='span9'>
 					<img data-src="holder.js/764x430/#0f0:#0f0">
 				</div>
-				<div class='span3 vertical-progressbar-span'>
-					<h4 class='edit'>
-						Race Progress:
-					</h4>
-					<div class='row-fluid'>
-						<div class="progress vertical">
-						<a class='btn btn-mini'><p class='css-vertical-text'>Cosmo</p></a>
-					</div>
-					<div class="progress vertical progress-warning">
-						<a class='btn btn-mini'><p class='css-vertical-text'>Almo</p></a>
-					</div>
-					<div class="progress vertical progress-info">
-						<a class='btn btn-mini'><p class='css-vertical-text'>Pie</p></a>
-					</div>
-					<div class="progress vertical progress-success">
-						<a class='btn btn-mini'><p class='css-vertical-text'>0xwas</p></a>
-					</div>
-					<div class="progress vertical progress-danger">
-						<a class='btn btn-mini'><p class='css-vertical-text'>Flare</p></a>
-					</div>
+				<div class='span3'>
+					<h4 class='edit'>Race Progress:</h4>
+					<div id='runner_name_labels' class='row-fluid' style='height: 100px'>
+						<!-- template -->
+						<div hidden='true' id='runner_name_label_template' class="progress vertical bottom">
+							<a class='btn btn-link btn-mini'><p class='vertical-text'>{{name}}</p></a>
+						</div>
+						<!--  -->
 
 					</div>
-					<div class="progress vertical">
-				    <div class="bar" data-amount-part="24" data-amount-total="52"></div>
-					</div>
-					<div class="progress vertical progress-warning">
-				    <div class="bar" data-amount-part="22" data-amount-total="52"></div>
-					</div>
-					<div class="progress vertical progress-info">
-				    <div class="bar" data-amount-part="44" data-amount-total="52"></div>
-					</div>
-					<div class="progress vertical progress-success">
-				    <div class="bar" data-amount-part="37" data-amount-total="52"></div>
-					</div>
-					<div class="progress vertical progress-danger">
-				    <div class="bar" data-amount-part="32" data-amount-total="52"></div>
+					<br>
+					<!-- super necessary! -->
+					<div id='runner_progress_bars' class='row-fluid vertical-progressbar-container' style='height:170px;'>
+						<div hidden='true' id='runner_progress_bar_template' class="progress vertical">
+					    <div class="bar" data-amount-part="0" data-amount-total="1"></div>
+						</div>
+
+
 					</div>
 				</div>
 			</div>
 			<div class='row-fluid'>
 				<div class='span9'>
-					<h2 id='heading' class='edit'>Game/Show/Broadcast Name</h2>
+					<h2 id='heading' class='edit'>Game/Show Name - Click to change</h2>
 				</div>
 				<div class='span3'>
-					<h1 id='timer'>12:34:56</h1>
+					<button class='btn btn-info' id='timer_container'><h3 id='timer'>0:00:00.00</h3></button>
 				</div>
 			</div>
 <!-- 			<div class='row-fluid well well-mini'>
@@ -73,11 +55,87 @@
 				</div>
 			</div> -->
 		</div>
+		<br>
+		<div class='container-fluid'>
+			<div class='row-fluid'>
+				<div class='span9'>
+					<h4>Runners Settings</h4>
+					<table class='table'>
+						<thead>
+							<tr>
+								<th>name</th>
+								<th>color</th>
+								<th>stream url</th>
+								<th>current split</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody id='runner_rows'>
+							<tr id='runner_row_template' hidden='true'>
+								<td id='name'>{{name}}</td>
+								<td id='color'>{{color}}</td>
+								<td id='stream_url'>{{stream_url}}</td>
+								<td id='split_tracking'>
+									<span id='current_split'>{{0}}</span>/<span id='total_splits'>{{1}}</span>
+									<button id='increment_split' class='btn btn-mini btn-success'>+++</button>
+									<button id='decrement_split' class='btn btn-mini btn-warning'>-</button>
+								</td>
+								<td>
+									<button id='destroy' class='btn btn-mini btn-danger'>X</button>
+								</td>
+							</tr>
+
+							<tr id='runner_rows_controls'>
+								<td>
+									<input id='name' type='text' class='input-small' placeholder='Runnerguy'>
+								</td>
+								<td>
+									<input id='color' type='text' class='input-mini' placeholder='blue'>
+								</td>
+								<td>
+									<input id='stream_url'  type='text' class='input' placeholder='http://www.twitch.tv/runnerguy2489'>
+								</td>
+								<td>
+									<input id='current_split' type='text' class='input-mini' placeholder='0' value='0'>
+								</td>
+								<td>
+									<button id='add' class='btn btn-success'>Add</button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<div class='span3' id='timer_controls'>
+					<h4>Timer Controls</h4>
+					<div class='row-fluid'>
+							<button id='start' class='btn btn-inverse'>Start</button>
+							<button hidden='true' id='pause' class='btn btn-info'>Pause</button>
+
+							<button id='reset' class='btn btn-danger'>Reset</button>
+					</div>
+					<!-- <br>
+					<div class='row-fluid'>
+						<button id='set' class='btn'>Set</button>
+					</div> -->
+				</div>
+			</div>
+			<div class='row-fluid'>
+				<div class='span6'>
+					<h4>Run Settings - Splits</h4>
+				</div>
+				<div class='span6'>
+
+				</div>
+			</div>
+		</div>
 		<script src="js/jquery.min.js"></script>
 	  <script src="js/bootstrap.min.js"></script>
+		<script src="js/jquery.rotateTableCellContent.js"></script>
 		<script src="js/jquery.jeditable.js"></script>
 	  <script src="js/holder.js"></script>
 	  <script src="bootstrap-progressbar/bootstrap-progressbar.js"></script>
+		<script src="js/stopwatch.js"></script>
 
 	  <script src="index.js"></script>
 	</body>

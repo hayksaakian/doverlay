@@ -14,14 +14,16 @@ body {
 }
 */
 
+body {
+  padding: 10px;
+}
 
 #main {
-  padding: 10px;
   width: 900px;
   height: 506px;
 }
 
-p.css-vertical-text {
+p.vertical-text {
 
   writing-mode:lr-tb;
   -webkit-transform:rotate(270deg);
@@ -29,23 +31,53 @@ p.css-vertical-text {
   -o-transform: rotate(270deg);
   white-space:nowrap;
   display:block;
-  width:60px;
-  height:60px;
-  font-size:15px;
+  width:100px;
+  height:100px;
+  font-size:14px;
 }
 
 p.centered {
   text-align: center;
 }
 
-.vertical-progressbar-span {
-  height: 300px;
+.vertical-progressbar-container {
+  height: 249px !important;
 }
 
 .progress.vertical {
   margin-right: 2px;
   width: 32px;
 }
+
+.bar {
+  font-size: 28px !important;
+}
+
+#timer {
+  font-family: "Monaco", "Courier", "monospace";
+}
+
+#timer_controls button {
+  width: 88px;
+}
+
+/* Styles for rotateTableCellContent plugin*/
+/*table div.rotated {
+  -webkit-transform: rotate(270deg);
+  -moz-transform: rotate(270deg);
+  writing-mode:tb-rl;
+  white-space: nowrap;
+}
+
+thead th {
+  vertical-align: top;
+}
+
+table .vertical {
+  white-space: nowrap;
+}*/
+/*******************************************/
+
 
 
 input[type="checkbox"]:disabled
