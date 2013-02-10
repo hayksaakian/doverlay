@@ -51,6 +51,7 @@ p.centered {
 
 .bar {
   font-size: 28px !important;
+  font-family: "Monaco", "Courier", "monospace";
 }
 
 #timer {

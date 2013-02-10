@@ -77,11 +77,15 @@
 								<td id='stream_url'>{{{stream_url}}}</td>
 								<td id='split_tracking' data-runner-id='{{id}}'>
 									<span id='current_split'>{{current_split}}</span>/<span id='total_splits'>{{total_splits}}</span>
-									<button id='increment_split' class='btn btn-mini btn-success'>+++</button>
-									<button id='decrement_split' class='btn btn-mini btn-warning'>-</button>
+									<button id='increment_split' class='btn btn-mini btn-success'>
+										<i class="icon icon-plus icon-white"></i>
+									</button>
+									<button id='decrement_split' class='btn btn-mini btn-warning'>
+										<i class="icon icon-minus icon-white"></i>
+									</button>
 								</td>
 								<td>
-									<button id='destroy' class='btn btn-mini btn-danger' data-runner-id='{{id}}'>X</button>
+									<button id='destroy' class='btn btn-mini btn-danger' data-runner-id='{{id}}'><i class='icon icon-remove icon-white'></i></button>
 								</td>
 							</tr>
 
