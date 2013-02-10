@@ -13,4 +13,9 @@ Now you can
 - manage their progress by splits
 - run a timer
 
+# Contribute
+
+- file an issue if there's a bug
+- fix bugs and submit pull requests
+
 ## Open source by MIT license (google it)
