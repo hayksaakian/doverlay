@@ -47,7 +47,9 @@ $(document).ready(function() {
 		console.log(settings);
     if(this.id == 'game_splits'){
       $('.bar').attr('data-amount-total', value)
-      $('#total_splits').text(value)
+      $('.total-splits').each(function() {               // loop over all elements
+        $(this).text(value)
+      });
       upd();
     }else if(this.id == 'color'){
       $(this).parent().id
@@ -223,7 +225,7 @@ function import_race(race_id){
   $.getJSON('http://speedrunslive.com:81/races/'+race_id, function(result){
     console.log(result)
     var the_race = {}
-    the_race.splits = 10
+    the_race.splits = 9
     var entrants = Object.keys(result['entrants'])
     var runners = []
     for (var i = entrants.length - 1; i >= 0; i--) {
