@@ -1,3 +1,4 @@
+var w;
 $(document).ready(function() {
 
   // import_srl_races_list();
@@ -16,7 +17,7 @@ $(document).ready(function() {
   });
 
   // update_progress();
-  var w = new Stopwatch(updateClock, 0.1); 
+  w = new Stopwatch(updateClock, 0.1); 
   $('#start').click(function(){
     w.start();
     $(this).hide()
@@ -137,12 +138,16 @@ $(document).ready(function() {
 function add_runner(runner, run){
   // console.log(runner)
   // make a label
-  var label = $('#runner_name_label_template').clone();
-  label.attr('id', runner.id+'_label')
-  label.find('p').text(runner.name)
-  label.find('a').attr('href', runner.stream_url)
-  label.appendTo('#runner_name_labels')
-  label.show();
+  // var label = $('#runner_name_label_template').clone();
+
+  // label.attr('id', runner.id+'_label')
+  // label.find('p').text(runner.name)
+  // label.find('a').attr('href', runner.stream_url)
+  // label.appendTo('#runner_name_labels')
+  // label.show();
+
+  var lhtml = Mustache.render($('#runner_name_label_template').html(), runner);
+  $('#runner_name_labels').append(lhtml)
 
   // make their progress bar
   var bar = $('#runner_progress_bar_template').clone();
@@ -221,10 +226,14 @@ function import_srl_races_list(){
 }
 
 function import_race(race_id){
-  console.log(race_id+': race_id')
+  console.log(race_id+': race_id');
+
   $.getJSON('http://speedrunslive.com:81/races/'+race_id, function(result){
     console.log(result)
-    var the_race = {}
+    var the_race = result
+    var t = new Date() - new Date(the_race.time * 1000);
+    w.setElapsed(0, 0, t/1000)
+    $('#start').click();
     the_race.splits = 9
     var entrants = Object.keys(result['entrants'])
     var runners = []
@@ -238,6 +247,10 @@ function import_race(race_id){
       the_runner.current_split = 0
       add_runner(the_runner, the_race);
     };
+    $('#game_name').text(the_race.game.name)
+    $('#game_goal').text(the_race.goal)
+    $('#specific_page').text('/race/?id='+race_id)
+    $('#specific_page').attr('href', 'http://www.speedrunslive.com/race/?id='+race_id)
   });
 }
 
