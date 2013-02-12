@@ -53,6 +53,7 @@ p.centered {
   font-size: 21px !important;
   font-family: "Monaco", "Courier", "monospace";
   padding: 5px;
+  text-shadow: 1px 1px 7px rgb(0, 0, 0), 0px -6px 20px rgba(3, 0, 0, 0.67) !important
 }
 
 #timer {
