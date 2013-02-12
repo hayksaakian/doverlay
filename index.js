@@ -25,15 +25,20 @@ $(document).ready(function() {
     $('#timer_container').addClass('btn-danger');
   });
 
-
-
   $('.edit').editable(function(value, settings) { 
 		console.log(this);
 		console.log(value);
 		console.log(settings);
+    if(this.id == 'game_splits'){
+      $('.bar').attr('data-amount-total', value)
+      $('#total_splits').text(value)
+      upd();
+    }
 		return(value);
 	}, { 
 	});
+
+
   upd();
 
   // change pb color
@@ -49,7 +54,7 @@ $(document).ready(function() {
   sample_runner.current_split = 1
 
   var sample_run = {}
-  sample_run.splits = 's o m e t h i n g'.split(' ')
+  sample_run.splits = parseInt($('#game_splits').text());
   // splits will be an array of split objects
   // TODO: define what a split really is
   add_runner(sample_runner, sample_run);
@@ -62,7 +67,11 @@ $(document).ready(function() {
     a_runner.stream_url = the_input.find('#stream_url').val()
     a_runner.current_split = the_input.find('#current_split').val()
 
-    add_runner(a_runner, sample_run)
+
+    var the_run = {}
+    the_run.splits = parseInt($('#game_splits').text());
+
+    add_runner(a_runner, the_run)
     // should check success
     the_input.find('#name').val('')
     the_input.find('#color').val('')
@@ -70,6 +79,8 @@ $(document).ready(function() {
     the_input.find('#current_split').val('0')
 
   });
+
+
 
 
   $(document).on('click', '#increment_split', function(e){
@@ -117,7 +128,7 @@ function add_runner(runner, run){
   var bar = $('#runner_progress_bar_template').clone();
   bar.attr('id', runner.id+'_progressbar')
   the_bar = bar.find('.bar');
-  the_bar.attr('data-amount-total', run.splits.length)
+  the_bar.attr('data-amount-total', run.splits)
   the_bar.attr('data-amount-part', runner.current_split)
   // pick a nice color, we may need it later  
   var nice_colors = ['blue', 'purple', 'gray']
@@ -137,7 +148,7 @@ function add_runner(runner, run){
   // add them to the table
   var row = $('#runner_row_template').clone();
   row.attr('id', runner.id+'_row')
-  runner['total_splits'] = run.splits.length
+  runner['total_splits'] = run.splits
 
   var output = Mustache.render(row.html(), runner);
 
