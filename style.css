@@ -23,6 +23,10 @@ body {
   height: 506px;
 }
 
+#heading {
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+}
+
 p.vertical-text {
 
   writing-mode:lr-tb;

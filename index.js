@@ -16,6 +16,10 @@ $(document).ready(function() {
     }
   });
 
+  $('#auto_title').click(function(){
+    $('#heading').text($('#game_name').text()+' - '+$('#game_goal').text())
+  });
+
   // update_progress();
   w = new Stopwatch(updateClock, 0.1); 
   $('#start').click(function(){
