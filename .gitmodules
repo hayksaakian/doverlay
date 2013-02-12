@@ -1,0 +1,3 @@
+[submodule "bootstrap-progressbar"]
+	path = bootstrap-progressbar
+	url = git://github.com/minddust/bootstrap-progressbar.git
