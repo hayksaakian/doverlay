@@ -1,3 +1,6 @@
 [submodule "bootstrap-progressbar"]
 	path = bootstrap-progressbar
 	url = git://github.com/minddust/bootstrap-progressbar.git
+[submodule "mustache.js"]
+	path = mustache.js
+	url = git://github.com/janl/mustache.js.git
