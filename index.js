@@ -1,6 +1,11 @@
 var w;
 $(document).ready(function() {
 
+  $('#theme_controls button').click(function(){
+    $('body').removeClass()
+    $('body').addClass($(this).attr('data-theme'))
+  });
+
   // import_srl_races_list();
   $('#import_list').click(function(){
     $(this).attr('disabled', true);
@@ -17,7 +22,7 @@ $(document).ready(function() {
   });
 
   $('#auto_title').click(function(){
-    $('#heading').text($('#game_name').text()+' - '+$('#game_goal').text())
+    $('#heading').text($('#game_name').text()+' - '+$('#game_goal').text());
   });
 
   // update_progress();

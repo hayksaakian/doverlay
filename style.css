@@ -18,6 +18,16 @@ body {
   padding: 10px;
 }
 
+body.dark {
+  background-color: black;
+  color: gray; 
+}
+
+body.light {
+  /* light white */
+  background-color: rgba(224, 224, 224, 0.5);
+}
+
 #main {
   min-width: 900px;
   height: 506px;
